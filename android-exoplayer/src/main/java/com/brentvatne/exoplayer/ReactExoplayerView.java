@@ -574,6 +574,9 @@ class ReactExoplayerView extends FrameLayout implements
         }
 
         if (player != null) {
+            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT) {
+              player.setVolume(0.f);
+            }
             if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
                 // Lower the volume
                 player.setVolume(audioVolume * 0.8f);
